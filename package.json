@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "github.com:chainsafe/eth2-spec-test-util",
   "author": "Chainsafe Systems",
-  "license": "Apache2",
+  "license": "Apache-2.0",
   "dependencies": {
     "chai": "^4.2.0",
     "js-yaml": "^3.13.1"
