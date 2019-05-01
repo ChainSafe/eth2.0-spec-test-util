@@ -1,9 +1,9 @@
 {
-  "name": "eth2-spec-test",
+  "name": "eth2-spec-test-util",
   "version": "0.1.0",
   "description": "Eth2 yaml spec test utility",
   "main": "index.js",
-  "repository": "github.com:chainsafe/eth2-spec-test",
+  "repository": "github.com:chainsafe/eth2-spec-test-util",
   "author": "Chainsafe Systems",
   "license": "Apache2",
   "dependencies": {
