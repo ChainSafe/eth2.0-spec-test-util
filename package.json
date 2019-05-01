@@ -1,7 +1,7 @@
 {
   "name": "@chainsafe/eth2.0-spec-test-util",
   "version": "0.1.0",
-  "description": "Eth2.0 yaml spec test utility",
+  "description": "Eth2.0 yaml spec test utility for mocha/chai",
   "main": "index.js",
   "repository": "github.com:chainsafe/eth2.0-spec-test-util",
   "author": "Chainsafe Systems",
@@ -9,5 +9,11 @@
   "dependencies": {
     "chai": "^4.2.0",
     "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "documentation": "^10.1.0"
+  },
+  "scripts": {
+    "build:docs": "documentation readme index.js --section=API --markdown-toc=false"
   }
 }
