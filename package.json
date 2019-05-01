@@ -1,5 +1,5 @@
 {
-  "name": "eth2-spec-test-util",
+  "name": "@chainsafe/eth2-spec-test-util",
   "version": "0.1.0",
   "description": "Eth2 yaml spec test utility",
   "main": "index.js",
