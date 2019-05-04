@@ -1,9 +1,9 @@
 export declare function describeSpecTest(
   testYamlPath: string,
   testFunc: Function,
-  getInput?: (any) => any[],
-  getExpected?: (any) => any,
-  getActual?: (any) => any,
-  shouldError?: (any, number, any) => boolean,
-  shouldSkip?: (any, index, any) => boolean,
+  getInput?: (testCase: any) => any[],
+  getExpected?: (testCase: any) => any,
+  getActual?: (result: any) => any,
+  shouldError?: (testCase: any, index: number, testSpec: any) => boolean,
+  shouldSkip?: (testCase: any, index: number, testSpec: any) => boolean,
 )
