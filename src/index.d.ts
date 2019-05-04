@@ -6,4 +6,4 @@ export declare function describeSpecTest(
   getActual?: (result: any) => any,
   shouldError?: (testCase: any, index: number, testSpec: any) => boolean,
   shouldSkip?: (testCase: any, index: number, testSpec: any) => boolean,
-)
+): void
