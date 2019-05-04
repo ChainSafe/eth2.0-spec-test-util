@@ -2,9 +2,12 @@
 const {readFileSync} = require('fs');
 const {isAbsolute, join} = require('path');
 
-const camelcaseKeys = require('camelcase-keys');
+const BN = require('bn.js')
 const {expect} = require('chai');
 const yaml = require('js-yaml');
+
+const camelcaseObj = require('./camelcaseObj');
+const ETH_SCHEMA = require('./yaml/schema');
 
 /**
  * Run yaml Eth2.0 spec tests for a certain function
@@ -26,12 +29,15 @@ function describeSpecTest(
   shouldError = (testCase, index, testSpec) => false,
   shouldSkip = (testCase, index, testSpec) => false,
 ) {
-  const testSpec = camelcaseKeys(yaml.safeLoad(
+  const testSpec = camelcaseObj(yaml.load(
     readFileSync(
       testYamlPath,
       'utf8'
-    )
-  ), {deep: true});
+    ), {
+      schema: ETH_SCHEMA,
+    }), {
+    deep: true
+  });
 
   describe(`${testSpec.runner} - ${testFunc.name} - ${testSpec.title}`, () => {
     testSpec.testCases.forEach((testCase, index) => {

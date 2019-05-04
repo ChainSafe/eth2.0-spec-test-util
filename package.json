@@ -1,13 +1,15 @@
 {
   "name": "@chainsafe/eth2.0-spec-test-util",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Eth2.0 yaml spec test utility for mocha/chai",
-  "main": "index.js",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "repository": "github.com:chainsafe/eth2.0-spec-test-util",
   "author": "Chainsafe Systems",
   "license": "Apache-2.0",
   "dependencies": {
-    "camelcase-keys": "^5.2.0",
+    "bn.js": "^4.11.8",
+    "camelcase": "^5.3.1",
     "chai": "^4.2.0",
     "js-yaml": "^3.13.1"
   },
