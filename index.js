@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-
 const {readFileSync} = require('fs');
 const {isAbsolute, join} = require('path');
 
+const camelcaseKeys = require('camelcase-keys');
 const {expect} = require('chai');
 const yaml = require('js-yaml');
 
@@ -26,12 +26,12 @@ function describeSpecTest(
   shouldError = (testCase) => false,
   shouldSkip = (testCase) => false,
 ) {
-  const testSpec = yaml.safeLoad(
+  const testSpec = camelcaseKeys(yaml.safeLoad(
     readFileSync(
       testYamlPath,
       'utf8'
     )
-  );
+  ), {deep: true});
 
   describe(`${testSpec.runner} - ${testFunc.name} - ${testSpec.title}`, () => {
     testSpec.test_cases.forEach((testCase, index) => {

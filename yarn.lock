@@ -1022,7 +1022,15 @@ cached-path-relative@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cached-path-relative/-/cached-path-relative-1.0.2.tgz#a13df4196d26776220cc3356eb147a52dba2c6db"
 
-camelcase@^5.0.0:
+camelcase-keys@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-5.2.0.tgz#6a66cff764f83766a6a609707aab105fd10415e3"
+  dependencies:
+    camelcase "^5.3.1"
+    map-obj "^3.0.0"
+    quick-lru "^1.0.0"
+
+camelcase@^5.0.0, camelcase@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
 
@@ -2143,6 +2151,10 @@ map-cache@^0.2.0, map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
 
+map-obj@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-3.1.0.tgz#3be9810d926db2f8612c728a2e95e03b7f109241"
+
 map-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
@@ -2695,6 +2707,10 @@ query-string@^4.1.0:
   dependencies:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
+
+quick-lru@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
 
 raw-body@~1.1.0:
   version "1.1.7"
