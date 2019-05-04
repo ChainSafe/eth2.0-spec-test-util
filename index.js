@@ -23,8 +23,8 @@ function describeSpecTest(
   getInput = (testCase) => testCase.input,
   getExpected = (testCase) => testCase.output,
   getActual = (result) => result,
-  shouldError = (testCase) => false,
-  shouldSkip = (testCase) => false,
+  shouldError = (testCase, index, testSpec) => false,
+  shouldSkip = (testCase, index, testSpec) => false,
 ) {
   const testSpec = camelcaseKeys(yaml.safeLoad(
     readFileSync(
@@ -34,14 +34,14 @@ function describeSpecTest(
   ), {deep: true});
 
   describe(`${testSpec.runner} - ${testFunc.name} - ${testSpec.title}`, () => {
-    testSpec.test_cases.forEach((testCase, index) => {
-      if (shouldSkip(testCase)) {
+    testSpec.testCases.forEach((testCase, index) => {
+      if (shouldSkip(testCase, index, testSpec)) {
         return;
       }
       const description = index + (testCase.description ? ' - ' + testCase.description : '');
       it(description, function () {
         const inputs = getInput(testCase);
-        if (shouldError(testCase)) {
+        if (shouldError(testCase, index, testSpec)) {
           expect(testFunc.bind(null, ...inputs)).to.throw();
         } else {
           const result = testFunc(...inputs);
