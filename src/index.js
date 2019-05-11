@@ -19,6 +19,7 @@ const ETH_SCHEMA = require('./yaml/schema');
  * @param {Function} getActual - function to convert function output into comparable actual output
  * @param {Function} shouldError - function to convert test case into a boolean, if the case should result in an error
  * @param {Function} shouldSkip - function to convert test case into a boolean, if the case should be skipped
+ * @param {Function} expectFunc - function to run expectations against expected and actual output
  */
 function describeSpecTest(
   testYamlPath,
@@ -28,6 +29,7 @@ function describeSpecTest(
   getActual = (result) => result,
   shouldError = (testCase, index, testSpec) => false,
   shouldSkip = (testCase, index, testSpec) => false,
+  expectFunc = (testCase, expect, expected, actual) => expect(actual).to.be.equal(expected),
 ) {
   const testSpec = camelcaseObj(yaml.load(
     readFileSync(
@@ -53,7 +55,7 @@ function describeSpecTest(
           const result = testFunc(...inputs);
           const actual = getActual(result);
           const expected = getExpected(testCase);
-          expect(actual).to.be.equal(expected);
+          expectFunc(testCase, expect, expected, actual);
         }
       });
     });
