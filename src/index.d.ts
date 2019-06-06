@@ -7,4 +7,5 @@ export declare function describeSpecTest(
   shouldError?: (testCase: any, index: number, testSpec: any) => boolean,
   shouldSkip?: (testCase: any, index: number, testSpec: any) => boolean,
   expectFunc?: (testCase: any, expect: Function, expected: any, actual: any) => void,
+  timeout?: number
 ): void
