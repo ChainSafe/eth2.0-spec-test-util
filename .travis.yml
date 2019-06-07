@@ -5,6 +5,8 @@ node_js:
 
 cache: yarn
 
+script: true
+
 before_deploy:
   - yarn install
 deploy:
