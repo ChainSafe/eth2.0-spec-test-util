@@ -7,8 +7,6 @@ cache: yarn
 
 script: true
 
-before_deploy:
-  - yarn install
 deploy:
   provider: npm
   script: true
