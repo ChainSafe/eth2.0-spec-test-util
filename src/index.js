@@ -15,11 +15,17 @@ const ETH_SCHEMA = require('./yaml/schema');
  * @param {string} testYamlPath - path to yaml spec test
  * @param {Function} testFunc - function to use to generate output
  * @param {Function} getInput - function to convert test case into input array
- * @param {Function} getExpected - function to convert test case into a comparable expected output
- * @param {Function} getActual - function to convert function output into comparable actual output
- * @param {Function} shouldError - function to convert test case into a boolean, if the case should result in an error
- * @param {Function} shouldSkip - function to convert test case into a boolean, if the case should be skipped
- * @param {Function} expectFunc - function to run expectations against expected and actual output
+ * @param {Function} getExpected - function to convert test case into a
+ *   comparable expected output
+ * @param {Function} getActual - function to convert function output into
+ *   comparable actual output
+ * @param {Function} shouldError - function to convert test case into a
+ *   boolean, if the case should result in an error
+ * @param {Function} shouldSkip - function to convert test case into a boolean,
+ *   if the case should be skipped
+ * @param {Function} expectFunc - function to run expectations against expected
+ *   and actual output
+ * @param timeout - how long to wait before marking tests as failed (default 2000ms). Set to 0 to wait infinitely
  */
 function describeSpecTest(
   testYamlPath,
@@ -30,6 +36,7 @@ function describeSpecTest(
   shouldError = (testCase, index, testSpec) => false,
   shouldSkip = (testCase, index, testSpec) => false,
   expectFunc = (testCase, expect, expected, actual) => expect(actual).to.be.equal(expected),
+  timeout = 2000
 ) {
   const testSpec = camelcaseObj(yaml.load(
     readFileSync(
@@ -41,7 +48,10 @@ function describeSpecTest(
     deep: true
   });
 
-  describe(`${testSpec.runner} - ${testFunc.name} - ${testSpec.title}`, () => {
+  describe(`${testSpec.runner} - ${testFunc.name} - ${testSpec.title}`, function() {
+
+    this.timeout(timeout);
+
     testSpec.testCases.forEach((testCase, index) => {
       if (shouldSkip(testCase, index, testSpec)) {
         return;
