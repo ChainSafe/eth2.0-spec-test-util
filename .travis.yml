@@ -17,5 +17,5 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: chainsafe/eth2.0-spec-test-util
+    repo: ChainSafe/eth2.0-spec-test-util
     branch: master
