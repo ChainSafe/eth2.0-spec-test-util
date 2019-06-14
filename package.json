@@ -5,6 +5,9 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "repository": "github.com:chainsafe/eth2.0-spec-test-util",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Chainsafe Systems",
   "license": "Apache-2.0",
   "dependencies": {
