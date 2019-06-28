@@ -1,13 +1,12 @@
 /* eslint-env mocha */
-const {readFileSync} = require('fs');
+const {readFileSync, writeFile} = require('fs');
 const {isAbsolute, join} = require('path');
-
-const BN = require('bn.js')
 const {expect} = require('chai');
-const yaml = require('js-yaml');
-
+const yaml = require('js-yaml')
 const camelcaseObj = require('./camelcaseObj');
 const ETH_SCHEMA = require('./yaml/schema');
+const profiler = require('v8-profiler-next');
+const env = process.env;
 
 /**
  * Run yaml Eth2.0 spec tests for a certain function
@@ -62,7 +61,24 @@ function describeSpecTest(
         if (shouldError(testCase, index, testSpec)) {
           expect(testFunc.bind(null, ...inputs)).to.throw();
         } else {
+          const profileId = `${description}-${Date.now()}.profile`;
+          if(env.GEN_PROFILE_DIR) {
+            profiler.startProfiling(profileId);
+          }
           const result = testFunc(...inputs);
+          if(env.GEN_PROFILE_DIR) {
+            const profile = profiler.stopProfiling(profileId);
+            const directory = env.GEN_PROFILE_DIR || __dirname;
+            profile.export((error, result) => {
+              if(error) {
+                console.log(error);
+                return;
+              }
+              writeFile(`${directory}/${profileId}`, result, () => {
+                profile.delete();
+              });
+            });
+          }
           const actual = getActual(result);
           const expected = getExpected(testCase);
           expectFunc(testCase, expect, expected, actual);
