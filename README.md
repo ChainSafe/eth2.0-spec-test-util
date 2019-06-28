@@ -21,3 +21,7 @@ Compares actual vs expected for all test cases
 -   `shouldError` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to convert test case into a boolean, if the case should result in an error (optional, default `(testCase,index,testSpec)=>false`)
 -   `shouldSkip` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to convert test case into a boolean, if the case should be skipped (optional, default `(testCase,index,testSpec)=>false`)
 -   `expectFunc` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to run expectations against expected and actual output (optional, default `(testCase,expect,expected,actual)=>expect(actual).to.be.equal(expected)`)
+
+## Profiling
+
+Set env variable GEN_PROFILE_DIR with path to directory where you wish your cpu profiles to be generated.
